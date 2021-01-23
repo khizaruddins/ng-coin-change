@@ -54,11 +54,30 @@ export class LoginComponent implements OnInit {
   onLoginFormSubmit(event) {
     event.preventDefault();
     if (this.signinForm.valid) {
-      localStorage.setItem('userInfo', JSON.stringify({
-        userId: this.signinForm.get('userId').value,
-      }));
-      this.authService.setLoggedInStatus(true);
-      this.router.navigate(['/changeBox']);
+      let users;
+      let foundUser;
+      if (localStorage.getItem('users') !== null) {
+        users = localStorage.getItem('users');
+        foundUser = users.find(item => item.userId === this.signinForm.get('userId').value);
+        if (foundUser) {
+          localStorage.setItem('userInfo', JSON.stringify({
+            userId: this.signinForm.get('userId').value,
+          }));
+          this.authService.setLoggedInStatus(true);
+          this.router.navigate(['/changeBox']);
+        } else {
+          this.errorMessage = 'Invalid Credentials !! Please Signup';
+          setTimeout(() => {
+            this.errorMessage = '';
+          }, 4000)
+        }
+      } else {
+        this.errorMessage = 'Invalid Credentials !! Please Signup';
+        setTimeout(() => {
+          this.errorMessage = '';
+        }, 4000)
+      }
+
     } else {
       this.signinForm.markAllAsTouched();
     }
