@@ -11,6 +11,7 @@ export class ProfileComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
+    private router: Router
   ) { }
   routeParamsSubs: Subscription;
   userData;
@@ -21,10 +22,16 @@ export class ProfileComponent implements OnInit {
   initGetRouteParams() {
     this.routeParamsSubs = this.activatedRoute.paramMap.subscribe(params => {
       console.log(params.get('userId').toUpperCase());
-      let userId = params.get('userId').toUpperCase();
+      let paramsUserId = params.get('userId').toUpperCase();
       if (localStorage.getItem('users') !== null) {
         let users = JSON.parse(localStorage.getItem('users'));
-        let foundUser = users.find(item => item.userId === userId);
+        let userId = JSON.parse(localStorage.getItem('userInfo')).userId;
+        let foundUser;
+        if (userId !== paramsUserId) {
+          this.router.navigate(['profile', userId]);
+        } else {
+          foundUser = users.find(item => item.userId === paramsUserId);
+        }
         this.userData = foundUser ? foundUser : null;
       } else {
         this.userData = null;
