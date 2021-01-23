@@ -1,0 +1,99 @@
+<div class="container mt-20">
+  <div class="tab-group">
+    <button class="tab-name c-p" (click)="changeTab('changebox')" [ngClass]="{'active': tabActive=='changebox'}">
+      Change box
+    </button>
+
+    <button class="tab-name c-p" (click)="changeTab('transactions')" [ngClass]="{'active': tabActive=='transactions'}">
+      Transactions
+    </button>
+  </div>
+  <section *ngIf="tabActive === 'changebox'">
+    <div class="card-holder">
+      <div class="card">
+        <div class="header mb-12">
+          <h2>Change Box</h2>
+        </div>
+        <p class="description mb-20">
+          Enter value to get change of 1, 2, 5 and 10
+        </p>
+        <form>
+          <div class="form-group">
+            <label for="input">Enter your value</label>
+            <input type="number" class="form-control" minLength="0" placeholder="Enter your value to get change"
+              [formControl]="changeBoxInput" id="input" (keypress.enter)="onSubmitChangeBoxInput()">
+            <div class="errors"
+              *ngIf="changeBoxInput.errors && changeBoxInput.errors.hasOwnProperty('min') && changeBoxInput.touched">
+              Minimum 1 must be provided
+            </div>
+            <div class="errors"
+              *ngIf="changeBoxInput.errors && changeBoxInput.errors.hasOwnProperty('required')&& changeBoxInput.touched">
+              This field is required
+            </div>
+            <div class="errors"
+              *ngIf="changeBoxInput.errors && changeBoxInput.errors.hasOwnProperty('integer') && changeBoxInput.touched">
+              Must be an integer
+            </div>
+          </div>
+          <button class="login-btn" (click)="onSubmitChangeBoxInput()">
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="card d-block" *ngIf="getLengthOfCoinRes()">
+      <h3 class="fs-2">RESULT</h3>
+      <div class="fs-2" *ngFor="let item of coinsRes|keyvalue">
+        {{item.value}} {{item.value>1? 'coins':'coin'}} of {{ item.key }} = {{ item.value * item.key }}
+      </div>
+    </div>
+  </section>
+  <section *ngIf="tabActive === 'transactions' && transactionsArr!==null">
+    <div class="card-holder">
+      <div class="card">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Sr. no.</th>
+              <th>Amount</th>
+              <th>
+                1
+              </th>
+              <th>
+                2
+              </th>
+              <th>
+                5
+              </th>
+              <th>
+                10
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of transactionsArr; index as i">
+              <td>
+                {{i+1}}.
+              </td>
+              <td>
+                {{item.value}}
+              </td>
+              <td *ngFor="let item of item.change">
+                {{ item}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <section *ngIf="tabActive == 'transactions' && transactionsArr==null">
+    <div class="card mt-20">
+      <div class="header">
+        <h2>
+          No Data found
+        </h2>
+      </div>
+    </div>
+  </section>
+</div>

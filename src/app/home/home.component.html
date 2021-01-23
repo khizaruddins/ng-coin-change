@@ -1,0 +1,34 @@
+<div class="container mt-20">
+  <div class="card-holder">
+    <div class="card">
+      <div class="header">
+        <h2>Welcome to Coin change app</h2>
+      </div>
+      <div *ngIf="!isAuthenticated">
+        <div class="content mt-20">
+          <p class="text-center">
+            Please login to see and use this application
+          </p>
+        </div>
+        <button routerLink="/login" class="login-btn">
+          login
+        </button>
+      </div>
+      <div class="header mt-20 text-center" *ngIf="isAuthenticated">
+        <h2 class="mt-20">
+          Welcome
+        </h2>
+        <h3 class="mt-20">
+          <a [routerLink]="['profile', userId]">
+            UserId: {{userId }}
+          </a>
+        </h3>
+        <p class="description mt-20 mb-20">
+          You can access to change box with the link below
+        </p>
+        <a routerLink="/changeBox">
+          ChangeBox</a>
+      </div>
+    </div>
+  </div>
+</div>

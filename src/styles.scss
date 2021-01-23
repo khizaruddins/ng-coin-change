@@ -1,1 +1,166 @@
 /* You can add global styles to this file, and also import other style files */
+*,
+*::before,
+*::after{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html{
+  // as 1 rem = 16 px converting 1 rem to 10 px 
+  // 10/16 * 100 = 62.5%;
+  font-size: 62.5%;
+}
+
+p{
+  font-size: 2rem;
+}
+
+.container{
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.mt-20{
+  margin-top: 20px;
+}
+
+.p-20{
+  padding: 20px;
+}
+
+.card-holder{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  padding: 20px;
+  margin: 20px;
+  box-shadow: 0px 1px 2px #ccc;
+  .header{
+    h2{
+      text-align: center;
+      font-size: 2.6rem;
+    }
+  }
+
+  &__description{
+    font-size: 1.8rem;
+  }
+}
+
+form{
+  .form-group{
+    label{
+      font-size: 1.4rem;
+    }
+    .form-control{
+      display: block;
+      outline: none;
+      width: 100%;
+      padding: 1rem;
+      margin-bottom: 1.4rem;
+      margin-top: .5rem;
+      &.ng-invalid.ng-touched{
+        border: 1px solid red !important;
+      }
+      &.ng-touched.ng-dirty.ng-valid{
+        border: 1px solid #00c500 !important;
+      }
+    }
+  }
+}
+
+.errors {
+  font-size: 1.2rem;
+  color: red !important;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.login-btn{
+  width: 100%;
+  border: none;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  font-size: 1.4rem;
+  text-transform:capitalize;
+}
+
+.tab-group{
+  text-align: center;
+  & .tab-name {
+    outline: none;
+    padding: 1rem 0.6rem;
+    width: auto;
+    background: #fff;
+    border: none;
+
+    &.active{
+      background: #efefef;
+      border: 1px solid #aeaeae;
+    }
+  }  
+}
+
+table{
+  font-size: 1.5rem;
+  thead{
+    tr{
+      width: 100%;
+      th{
+        border: 1px solid #ccc;
+        padding: 1rem 5rem;
+      }
+    }
+  }
+  tbody{
+    tr{
+      td{
+        border: 1px solid #ccc;
+        padding: 1rem 5rem;
+      }
+    }
+  }
+}
+
+.c-p{
+  cursor:pointer !important;
+}
+
+.w-auto {
+  width: auto !important;
+}
+
+.d-inline{
+  display: inline !important;
+}
+
+.fs-1-4{
+  font-size: 1.4 rem;
+}
+
+.fs-2{
+  font-size: 2rem;
+}
+
+.coin-result{
+  flex:1 0 100%;
+}
+
+.w-80{
+  width: 80% !important;
+}
+
+.mb-20{
+  margin-bottom: 20px;
+}
+.mb-12{
+  margin-bottom: 12px;
+}

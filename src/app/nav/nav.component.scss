@@ -1,0 +1,36 @@
+.navigation{
+  font-size: 1.6rem;
+  box-shadow: 0px 0px 3px #080808;
+  ul {
+    display: flex;
+    height: 55px;
+    li{
+      list-style: none;
+      padding: 2rem;
+      
+      a{
+        text-decoration: none;
+        cursor: pointer;
+        &:focus {
+          border:none;
+        }
+      }
+
+      &.brand{
+        padding: 0px;
+        margin: 0px;
+        & img {
+         height: 55px; 
+        }
+      }
+      &.flex-end{
+        margin-left: auto;
+      }
+
+      &:hover {
+        background: #f3f3f3;
+        cursor: pointer;
+      }
+    }
+  }
+}

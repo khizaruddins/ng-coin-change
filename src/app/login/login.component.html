@@ -1,0 +1,166 @@
+<div class="container mt-20 p-20">
+  <div class="card">
+    <div class="tab-group">
+      <button class="tab-name  c-p" (click)="changeTab('login')" [ngClass]="{'active': loginOrSignup=='login'}">
+        Login
+      </button>
+      <button class="tab-name  c-p" (click)="changeTab('signup')" [ngClass]="{'active': loginOrSignup=='signup'}">
+        Signup
+      </button>
+    </div>
+    <div class="header mt-20">
+      <h2 class="header__title">
+        Welcome to Coin change App
+      </h2>
+    </div>
+
+    <div class="card__description mt-20">
+      <form [formGroup]="signinForm" *ngIf="loginOrSignup=='login'">
+        <div class="form-group">
+          <label for="userId"
+            [ngClass]="{'c-red': signinForm.get('userId').errors && signinForm.get('userId').touched}">User Id</label>
+          <input type="text" id="userId" name="userId" class="form-control" placeholder="User Id"
+            formControlName="userId" #input [value]="input.value.toUpperCase()">
+          <div class="errors"
+            *ngIf="signinForm.get('userId').errors && signinForm.get('userId').errors.hasOwnProperty('required') && signinForm.get('userId').touched">
+            This field is required
+          </div>
+          <div class="errors"
+            *ngIf="signinForm.get('userId').errors && signinForm.get('userId').errors.hasOwnProperty('pattern') && signinForm.get('userId').touched">
+            Must have combination of number and alphabet
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password"
+            [ngClass]="{'c-red': signinForm.get('password').errors && signinForm.get('password').touched}">Password</label>
+          <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password"
+            formControlName="password">
+          <div class="errors"
+            *ngIf="signinForm.get('password').errors && signinForm.get('password').errors.hasOwnProperty('required') && signinForm.get('password').touched">
+            This field is required
+          </div>
+          <div class="errors"
+            *ngIf="signinForm.get('password').errors && signinForm.get('password').errors.hasOwnProperty('minlength') && signinForm.get('password').touched">
+            Minimum 6 characters required
+          </div>
+          <div class="errors"
+            *ngIf="signinForm.get('password').errors && signinForm.get('password').errors.hasOwnProperty('maxlength') && signinForm.get('password').touched">
+            Maximum 12 characters required
+          </div>
+          <div class="errors"
+            *ngIf="signinForm.get('password').errors && signinForm.get('password').errors.hasOwnProperty('pattern') && signinForm.get('password').touched">
+            Password must contains atleast one [!@#$*]
+          </div>
+        </div>
+      </form>
+      <form [formGroup]="signupForm" *ngIf="loginOrSignup=='signup'">
+        <div class="form-group">
+          <label for="name"
+            [ngClass]="{'c-red': signupForm.get('name').errors && signupForm.get('name').touched}">Name</label>
+          <input type="text" id="userId" name="name" class="form-control" placeholder="Name" formControlName="name">
+          <div class="errors"
+            *ngIf="signupForm.get('name').errors && signupForm.get('name').errors.hasOwnProperty('required') && signupForm.get('name').touched">
+            This field is required
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email"
+            [ngClass]="{'c-red': signupForm.get('email').errors && signupForm.get('email').touched}">Email</label>
+          <input type="email" id="email" name="email" class="form-control" placeholder="Email" formControlName="email">
+          <div class="errors"
+            *ngIf="signupForm.get('email').errors && signupForm.get('email').errors.hasOwnProperty('required') && signupForm.get('email').touched">
+            This field is required
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="address"
+            [ngClass]="{'c-red': signupForm.get('address').errors && signupForm.get('address').touched}">Address</label>
+          <input type="text" id="address" name="address" class="form-control" placeholder="Address"
+            formControlName="address">
+          <div class="errors"
+            *ngIf="signupForm.get('address').errors && signupForm.get('address').errors.hasOwnProperty('required') && signupForm.get('address').touched">
+            This field is required
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="contact">Contact</label>
+          <input type="number" id="contact" name="contact" class="form-control" placeholder="contact"
+            formControlName="contact">
+          <div class="errors"
+            *ngIf="signupForm.get('contact').errors && signupForm.get('contact').errors.hasOwnProperty('required') && signupForm.get('contact').touched">
+            This field is required
+          </div>
+          <div class="errors"
+            *ngIf="signupForm.get('contact').errors && signupForm.get('contact').errors.hasOwnProperty('required') && signupForm.get('contact').errors.hasOwnProperty('pattern') && signupForm.get('contact').touched">
+            Must consist of number
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="gender"
+            [ngClass]="{'c-red': signupForm.get('gender').errors && signupForm.get('gender').touched}">Gender</label>
+          <div class="fs-1-4">
+            Male
+            <input type="radio" name="gender" class="form-control w-auto d-inline" placeholder="gender"
+              formControlName="gender" value="male">
+            <span>
+              Female
+              <input type="radio" name="gender" class="form-control w-auto d-inline" placeholder="gender"
+                formControlName="gender" value="female">
+            </span>
+          </div>
+          <div class="errors"
+            *ngIf="signupForm.get('gender').errors && signupForm.get('gender').errors.hasOwnProperty('required') && signupForm.get('gender').touched">
+            This field is required
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="userId1"
+            [ngClass]="{'c-red': signupForm.get('userId').errors && signupForm.get('userId').touched}">User Id</label>
+          <input type="text" id="userId1" name="userId" class="form-control" placeholder="User Id"
+            formControlName="userId" #input [value]="input.value.toUpperCase()">
+          <div class="errors"
+            *ngIf="signupForm.get('userId').errors && signupForm.get('userId').errors.hasOwnProperty('required') && signupForm.get('userId').touched">
+            This field is required
+          </div>
+          <div class="errors"
+            *ngIf="signupForm.get('userId').errors && signupForm.get('userId').errors.hasOwnProperty('pattern') && signupForm.get('userId').touched">
+            Must have combination of number and alphabet
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password1"
+            [ngClass]="{'c-red': signupForm.get('password').errors && signupForm.get('password').touched}">Password</label>
+          <input type="password" id="password1" name="password" class="form-control" placeholder="Enter your password"
+            formControlName="password">
+          <div class="errors"
+            *ngIf="signupForm.get('password').errors && signupForm.get('password').errors.hasOwnProperty('required') && signupForm.get('password').touched">
+            This field is required
+          </div>
+          <div class="errors"
+            *ngIf="signupForm.get('password').errors && signupForm.get('password').errors.hasOwnProperty('minlength') && signupForm.get('password').touched">
+            Minimum 6 characters required
+          </div>
+          <div class="errors"
+            *ngIf="signupForm.get('password').errors && signupForm.get('password').errors.hasOwnProperty('maxlength') && signupForm.get('password').touched">
+            Maximum 12 characters required
+          </div>
+          <div class="errors"
+            *ngIf="signupForm.get('password').errors && signupForm.get('password').errors.hasOwnProperty('pattern') && signupForm.get('password').touched">
+            Password must contains atleast one [!@#$*]
+          </div>
+        </div>
+
+      </form>
+      <button class="login-btn" (click)="onLoginFormSubmit($event)" *ngIf="loginOrSignup=='login'">
+        Login
+      </button>
+
+      <button class="login-btn" (click)="onSignupFormSubmit($event)" *ngIf="loginOrSignup=='signup'">
+        Signup
+      </button>
+    </div>
+    <div class="errors fs-2" *ngIf="errorMessage!==''">
+      {{errorMessage}}
+    </div>
+  </div>
+</div>

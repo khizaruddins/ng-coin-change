@@ -1,0 +1,22 @@
+<div class="container mt-20">
+  <div class="card-holder">
+    <div class="card fs-2">
+      <h3>Profile</h3>
+      <div>
+        Name: {{ userData.name }}
+      </div>
+      <div>
+        Email: {{ userData.email }}
+      </div>
+      <div>
+        Address: {{ userData.address }}
+      </div>
+      <div>
+        Contact: {{ userData.contact|phone }}
+      </div>
+      <div>
+        Gender: {{ userData.gender }}
+      </div>
+    </div>
+  </div>
+</div>

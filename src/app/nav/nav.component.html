@@ -1,0 +1,24 @@
+<nav class="navigation">
+  <div class="container">
+    <ul>
+      <li class="brand" routerLink="/">
+        <img src="/assets/images/logo/logo.jpg" alt="no image">
+      </li>
+      <li routerLink="/">
+        Home
+      </li>
+      <li class="flex-end" routerLink="/login" *ngIf="!isAuthenticated">
+        Login
+      </li>
+      <li class="flex-end" *ngIf="isAuthenticated">
+        User id: {{userId}}
+      </li>
+      <li routerLink="/changeBox" *ngIf="isAuthenticated">
+        Change Box
+      </li>
+      <li *ngIf="isAuthenticated" (click)="signout()">
+        Signout
+      </li>
+    </ul>
+  </div>
+</nav>
