@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
       let users;
       let foundUser;
       if (localStorage.getItem('users') !== null) {
-        users = localStorage.getItem('users');
+        users = JSON.parse(localStorage.getItem('users'));
         foundUser = users.find(item => item.userId === this.signinForm.get('userId').value);
         if (foundUser) {
           localStorage.setItem('userInfo', JSON.stringify({
